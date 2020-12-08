@@ -9,7 +9,7 @@ CREATE TABLE personas(
     id_persona INT AUTO_INCREMENT,
     nombre VARCHAR(30),
     apellidos VARCHAR(30),
-    direccion CHAR(30),
+    direccion CHAR(60),
     codigo_postal INT,
     ciudad VARCHAR(30),
     altura DOUBLE,

@@ -21,11 +21,9 @@ package cat.copernic.m03uf06review.hibernate_relational;
  */
 public class HibernateRelationalMain {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
     
 }

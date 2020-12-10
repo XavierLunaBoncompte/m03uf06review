@@ -41,17 +41,17 @@ public class HibernateMain {
     static Personas p3;
 
     public static void main(String[] args) {
-        p1 = new Personas("David", "Garcia", "Carrer de Palet i Barba", 8224, "Terrassa", 1.88, false, new Date(1999 - 10 - 22));
+        p1 = new Personas("David", "Garcia", "Carrer de Palet i Barba", 8225, "Terrassa", 1.88, false, new Date(1999 - 10 - 22));
         p2 = new Personas("Manuel", "Fernandez", "Carrer de Carrasco i Formiguera", 8224, "Terrassa", 1.74, true, new Date(2000 - 11 - 05));
-        p3 = new Personas("Eric", "Lopez", "Carrer de Ferrer i Guardia", 8225, "Terrassa", 1.95, false, new Date(1999 - 12 - 31));
+        p3 = new Personas("Eric", "Lopez", "Carrer de Ferrer i Guardia", 8224, "Terrassa", 1.95, false, new Date(1999 - 12 - 31));
 
         Integer ID1 = HibeMain.addPersona(p1);
         Integer ID2 = HibeMain.addPersona(p2);
         Integer ID3 = HibeMain.addPersona(p3);
 
-        HibeMain.updatePersona(ID1, 8224);
+        //HibeMain.updatePersona(ID1, 8224);
 
-        HibeMain.deletePersona(ID3);
+        //HibeMain.deletePersona(ID3);
 
         HibeMain.getListaDePersonas();
     }

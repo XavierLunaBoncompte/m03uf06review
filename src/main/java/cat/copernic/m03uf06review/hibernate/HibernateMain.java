@@ -124,8 +124,8 @@ public class HibernateMain {
 
         try {
             tx = session.beginTransaction();
-            List employees = session.createQuery("FROM Personas").list();
-            for (Iterator iterator = employees.iterator(); iterator.hasNext();) {
+            List personas = session.createQuery("FROM Personas").list();
+            for (Iterator iterator = personas.iterator(); iterator.hasNext();) {
                 Personas persona = (Personas) iterator.next();
                 System.out.println("+---------------------------------------------+");
                 System.out.print("Nombre: " + persona.getNombre() + "\n");

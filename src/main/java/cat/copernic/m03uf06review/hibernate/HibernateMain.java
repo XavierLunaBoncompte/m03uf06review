@@ -45,18 +45,18 @@ public class HibernateMain {
         p2 = new Personas("Manuel", "Fernandez", "Carrer de Carrasco i Formiguera", 8224, "Terrassa", 1.74, true, new Date(2000 - 11 - 05));
         p3 = new Personas("Eric", "Lopez", "Carrer de Ferrer i Guardia", 8224, "Terrassa", 1.95, false, new Date(1999 - 12 - 31));
 
-        Integer ID1 = HibeMain.addPersona(p1);
-        Integer ID2 = HibeMain.addPersona(p2);
-        Integer ID3 = HibeMain.addPersona(p3);
+        Integer ID1 = HibeMain.añadirPersona(p1);
+        Integer ID2 = HibeMain.añadirPersona(p2);
+        Integer ID3 = HibeMain.añadirPersona(p3);
 
-        //HibeMain.updatePersona(ID1, 8224);
+        HibeMain.actualizarPersona(ID1, 8224);
 
-        //HibeMain.deletePersona(ID3);
+        HibeMain.eliminarPersona(ID3);
 
         HibeMain.getListaDePersonas();
     }
 
-    public Integer addPersona(Personas persona) {
+    public Integer añadirPersona(Personas persona) {
 
         Session session = HibeUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -79,7 +79,7 @@ public class HibernateMain {
         return ID;
     }
 
-    public void updatePersona(Integer ID, Integer codigoPostal) {
+    public void actualizarPersona(Integer ID, Integer codigoPostal) {
         Session session = HibeUtil.getSessionFactory().openSession();
         Transaction tx = null;
 
@@ -99,7 +99,7 @@ public class HibernateMain {
         }
     }
 
-    public void deletePersona(Integer ID) {
+    public void eliminarPersona(Integer ID) {
         Session session = HibeUtil.getSessionFactory().openSession();
         Transaction tx = null;
 
@@ -128,8 +128,8 @@ public class HibernateMain {
             for (Iterator iterator = personas.iterator(); iterator.hasNext();) {
                 Personas persona = (Personas) iterator.next();
                 System.out.println("+---------------------------------------------+");
-                System.out.print("Nombre: " + persona.getNombre() + "\n");
-                System.out.print("Apellidos: " + persona.getApellidos() + "\n");
+                System.out.println("Nombre: " + persona.getNombre() + "\n");
+                System.out.println("Apellidos: " + persona.getApellidos() + "\n");
                 System.out.println("Direccion: " + persona.getDireccion() + "\n");
                 System.out.println("Codigo Postal: " + persona.getCodigoPostal() + "\n");
                 System.out.println("Ciudad: " + persona.getCiudad() + "\n");
@@ -140,6 +140,7 @@ public class HibernateMain {
             }
             tx.commit();
             System.out.println("LISTA IMPRIMIDA CORRECTAMENTE");
+            personas.clear();
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();

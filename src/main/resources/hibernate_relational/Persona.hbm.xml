@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/12/2020 02:41:32 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cat.copernic.m03uf06review.hibernate_relational.Persona" table="persona" catalog="contactos" optimistic-lock="version">
+        <id name="idPersona" type="java.lang.Integer">
+            <column name="id_persona" />
+            <generator class="identity" />
+        </id>
+        <property name="nombrePersona" type="string">
+            <column name="nombre_persona" length="30" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="30" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="60" />
+        </property>
+        <property name="codigoPostal" type="java.lang.Integer">
+            <column name="codigo_postal" />
+        </property>
+        <property name="ciudad" type="string">
+            <column name="ciudad" length="30" />
+        </property>
+        <property name="altura" type="java.lang.Double">
+            <column name="altura" precision="22" scale="0" />
+        </property>
+        <property name="fumador" type="java.lang.Boolean">
+            <column name="fumador" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fecha_nacimiento" length="10" />
+        </property>
+        <set name="organizacionsForIdPersona2" table="organizacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_persona2" />
+            </key>
+            <one-to-many class="cat.copernic.m03uf06review.hibernate_relational.Organizacion" />
+        </set>
+        <set name="organizacionsForIdPersona3" table="organizacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_persona3" />
+            </key>
+            <one-to-many class="cat.copernic.m03uf06review.hibernate_relational.Organizacion" />
+        </set>
+        <set name="organizacionsForIdPersona1" table="organizacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_persona1" />
+            </key>
+            <one-to-many class="cat.copernic.m03uf06review.hibernate_relational.Organizacion" />
+        </set>
+    </class>
+</hibernate-mapping>

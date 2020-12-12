@@ -50,5 +50,7 @@ Contributor(s):
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
     <mapping resource="cat/copernic/m03uf06review/hibernate/Personas.hbm.xml"/>
+    <mapping resource="hibernate_relational/Organizacion.hbm.xml"/>
+    <mapping resource="hibernate_relational/Persona.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

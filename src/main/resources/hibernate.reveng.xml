@@ -42,4 +42,6 @@ Contributor(s):
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="contactos"/>
   <table-filter match-name="personas"/>
+  <table-filter match-name="organizacion"/>
+  <table-filter match-name="persona"/>
 </hibernate-reverse-engineering>

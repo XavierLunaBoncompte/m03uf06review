@@ -47,18 +47,19 @@ public class HibernateRelationalMain {
         Integer ID1 = HibeRelaMain.añadirPersona(p1);
         Integer ID2 = HibeRelaMain.añadirPersona(p2);
         Integer ID3 = HibeRelaMain.añadirPersona(p3);
+        Integer ID5 = HibeRelaMain.añadirPersona(p4);
 
         HibeRelaMain.actualizarPersona(ID1);
 
-        //HibeRelaMain.eliminarPersona(ID3);
-        //HibeRelaMain.getListaDePersonas();
+        HibeRelaMain.eliminarPersona(ID5);
+        HibeRelaMain.getListaDePersonas();
         o1 = new Organizacion(p1, p2, p3, "World Wildlife Fund", "Sus objetivos de trabajo son la investigación, la conservación y la restauración ambiental.");
 
         Integer ID4 = HibeRelaMain.añadirOrganizacion(o1);
 
         HibeRelaMain.actualizarOrg(ID4);
 
-        //HibeRelaMain.eliminarOrg(ID4);
+        HibeRelaMain.eliminarOrg(ID4);
         HibeRelaMain.getListaDeOrganizaciones();
     }
 

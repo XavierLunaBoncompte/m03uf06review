@@ -1,5 +1,5 @@
 package cat.copernic.m03uf06review.hibernate;
-// Generated 03/12/2020 20:18:23 by Hibernate Tools 4.3.1
+// Generated 15/12/2020 19:50:51 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -98,7 +98,6 @@ public class Personas  implements java.io.Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    
 
 
 

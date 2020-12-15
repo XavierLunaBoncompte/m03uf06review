@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03/12/2020 20:18:25 by Hibernate Tools 4.3.1 -->
+<!-- Generated 15/12/2020 19:50:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="cat.copernic.m03uf06review.hibernate.Personas" table="personas" catalog="contactos" optimistic-lock="version">
+    <class name="cat.copernic.m03uf06review.hibernate.Personas" table="personas" catalog="contactos">
         <id name="idPersona" type="java.lang.Integer">
             <column name="id_persona" />
-            <generator class="identity" />
+            <generator class="identity"></generator>
         </id>
         <property name="nombre" type="string">
             <column name="nombre" length="30" />

@@ -1,27 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 12/12/2020 02:41:32 by Hibernate Tools 4.3.1 -->
+<!-- Generated 15/12/2020 19:50:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cat.copernic.m03uf06review.hibernate_relational.Organizacion" table="organizacion" catalog="contactos" optimistic-lock="version">
         <id name="idOrg" type="java.lang.Integer">
             <column name="id_org" />
             <generator class="identity" />
         </id>
-        <many-to-one name="personaByIdPersona2" class="cat.copernic.m03uf06review.hibernate_relational.Persona" fetch="select">
-            <column name="id_persona2" />
-        </many-to-one>
-        <many-to-one name="personaByIdPersona3" class="cat.copernic.m03uf06review.hibernate_relational.Persona" fetch="select">
-            <column name="id_persona3" />
-        </many-to-one>
-        <many-to-one name="personaByIdPersona1" class="cat.copernic.m03uf06review.hibernate_relational.Persona" fetch="select">
-            <column name="id_persona1" />
-        </many-to-one>
         <property name="nombreGrupo" type="string">
             <column name="nombre_grupo" length="30" />
         </property>
         <property name="descripcion" type="string">
             <column name="descripcion" length="300" />
         </property>
+        <set name="personas" table="persona" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_org" />
+            </key>
+            <one-to-many class="cat.copernic.m03uf06review.hibernate_relational.Persona" />
+        </set>
     </class>
 </hibernate-mapping>

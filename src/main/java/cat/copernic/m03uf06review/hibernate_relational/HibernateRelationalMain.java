@@ -7,11 +7,13 @@ package cat.copernic.m03uf06review.hibernate_relational;
 
 import cat.copernic.m03uf06review.HibernateUtil.HibernateUtil;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import java.util.Set;
 
 /**
  * En aquesta secció cal accedir a dues taules de MySQL que formin una relació
@@ -35,10 +37,12 @@ public class HibernateRelationalMain {
     static Persona p2;
     static Persona p3;
     static Persona p4;
+    static Set set1;
 
     static Organizacion o1;
 
     public static void main(String[] args) {
+       
         p1 = new Persona("David", "Garcia", "Carrer de Palet i Barba", 8225, "Terrassa", 1.88, false, new Date(1999 - 10 - 22));
         p2 = new Persona("Manuel", "Fernandez", "Carrer de Carrasco i Formiguera", 8224, "Terrassa", 1.74, true, new Date(2000 - 11 - 05));
         p3 = new Persona("Eric", "Lopez", "Carrer de Ferrer i Guardia", 8224, "Terrassa", 1.95, false, new Date(1999 - 12 - 31));
@@ -53,13 +57,19 @@ public class HibernateRelationalMain {
 
         HibeRelaMain.eliminarPersona(ID5);
         HibeRelaMain.getListaDePersonas();
-        o1 = new Organizacion(p1, p2, p3, "World Wildlife Fund", "Sus objetivos de trabajo son la investigación, la conservación y la restauración ambiental.");
-
+        
+        set1 = new HashSet();
+        set1.add(p1);
+        set1.add(p2);
+        set1.add(p3);
+        
+        o1 = new Organizacion("World Wildlife Fund", "Sus objetivos de trabajo son la investigación, la conservación y la restauración ambiental.", set1);
+        
         Integer ID4 = HibeRelaMain.añadirOrganizacion(o1);
 
         HibeRelaMain.actualizarOrg(ID4);
 
-        HibeRelaMain.eliminarOrg(ID4);
+        //HibeRelaMain.eliminarOrg(ID4);
         HibeRelaMain.getListaDeOrganizaciones();
     }
 
@@ -142,6 +152,7 @@ public class HibernateRelationalMain {
                 System.out.println("Altura: " + persona.getAltura() + "\n");
                 System.out.println("És fumador: " + persona.getFumador() + "\n");
                 System.out.println("Fecha Nacimiento: " + persona.getFechaNacimiento() + "\n");
+                System.out.println("Organizacion: " + persona.getOrganizacion() + "\n");
                 System.out.println("+---------------------------------------------+\n");
             }
             tx.commit();
@@ -230,9 +241,7 @@ public class HibernateRelationalMain {
                 System.out.println("+---------------------------------------------+");
                 System.out.println("Nombre Organizacion: " + organizacion.getNombreGrupo() + "\n");
                 System.out.println("Descripcion: " + organizacion.getDescripcion() + "\n");
-                System.out.println("Persona 1: " + organizacion.getPersonaByIdPersona1()+ "\n");
-                System.out.println("Persona 2: " + organizacion.getPersonaByIdPersona2() + "\n");
-                System.out.println("Persona 3: " + organizacion.getPersonaByIdPersona3() + "\n");
+                System.out.println("Personas: " + organizacion.getPersonas() + "\n");
                 System.out.println("+---------------------------------------------+\n");
             }
             tx.commit();

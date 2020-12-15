@@ -49,8 +49,10 @@ public class HibernateMain {
         Integer ID1 = HibeMain.añadirPersona(p1);
         Integer ID2 = HibeMain.añadirPersona(p2);
         Integer ID3 = HibeMain.añadirPersona(p3);
+        
+        p2 = new Personas("Javier", "Fernandez", "Carrer de Carrasco i Formiguera", 8224, "Terrassa", 1.74, true, new Date(2000 - 11 - 05));
 
-        HibeMain.actualizarPersona(ID1);
+        HibeMain.actualizarPersona(p2);
 
         HibeMain.eliminarPersona(ID3);
 
@@ -80,15 +82,12 @@ public class HibernateMain {
         return ID;
     }
 
-    public void actualizarPersona(Integer ID) {
+    public void actualizarPersona(Personas p) {
         Session session = HibeUtil.getSessionFactory().openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            Personas p = (Personas) session.get(Personas.class, ID);
-            p.setNombre("Javier");
-            p.setCodigoPostal(8224);
             session.update(p);
             tx.commit();
         } catch (HibernateException e) {

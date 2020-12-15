@@ -52,10 +52,12 @@ public class HibernateRelationalMain {
         Integer ID2 = HibeRelaMain.añadirPersona(p2);
         Integer ID3 = HibeRelaMain.añadirPersona(p3);
         Integer ID5 = HibeRelaMain.añadirPersona(p4);
+        
+        p4 = new Persona("Javier", "Ramirez", "Carrer de Ferrer i Guardia", 8224, "Terrassa", 1.75, false, new Date(2000 - 01 - 27));
 
-        HibeRelaMain.actualizarPersona(ID1);
+        HibeRelaMain.actualizarPersona(p4);
 
-        HibeRelaMain.eliminarPersona(ID5);
+        //HibeRelaMain.eliminarPersona(ID5);
         HibeRelaMain.getListaDePersonas();
         
         set1 = new HashSet();
@@ -67,7 +69,9 @@ public class HibernateRelationalMain {
         
         Integer ID4 = HibeRelaMain.añadirOrganizacion(o1);
 
-        HibeRelaMain.actualizarOrg(ID4);
+        o1 = new Organizacion("World Wildlife Fund", "Nueva Descripcion -> El World Wildlife Fund ha desempeñado un papel muy importante en el desarrollo de una conciencia ambientalista en el planeta y en el movimiento conservacionista mundial.", set1);
+        //"Nueva Descripcion -> El World Wildlife Fund ha desempeñado un papel muy importante en el desarrollo de una conciencia ambientalista en el planeta y en el movimiento conservacionista mundial."
+        HibeRelaMain.actualizarOrg(o1);
 
         //HibeRelaMain.eliminarOrg(ID4);
         HibeRelaMain.getListaDeOrganizaciones();
@@ -94,16 +98,13 @@ public class HibernateRelationalMain {
         return ID;
     }
 
-    public void actualizarPersona(Integer ID) {
+    public void actualizarPersona(Persona persona) {
         Session session = HibeUtil.getSessionFactory().openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            Persona p = (Persona) session.get(Persona.class, ID);
-            p.setNombrePersona("Jorge");
-            p.setCodigoPostal(8224);
-            session.update(p);
+            session.update(persona);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {
@@ -190,14 +191,12 @@ public class HibernateRelationalMain {
         return ID;
     }
 
-    public void actualizarOrg(Integer ID) {
+    public void actualizarOrg(Organizacion o) {
         Session session = HibeUtil.getSessionFactory().openSession();
         Transaction tx = null;
 
         try {
-            tx = session.beginTransaction();
-            Organizacion o = (Organizacion) session.get(Organizacion.class, ID);
-            o.setDescripcion("Nueva Descripcion -> El World Wildlife Fund ha desempeñado un papel muy importante en el desarrollo de una conciencia ambientalista en el planeta y en el movimiento conservacionista mundial.");
+            tx = session.beginTransaction();        
             session.update(o);
             tx.commit();
         } catch (HibernateException e) {
